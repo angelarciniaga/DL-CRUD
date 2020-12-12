@@ -11,12 +11,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(id) in datoUsuarios" :key="id">
+            <tr v-for="(item) in datoUsuarios" :key="item">
             <td>{{item.nombre}}</td>
             <td>{{item.apellido}}</td>
             <td>{{item.email}}</td>
-            <td><v-btn color="error" elevation="5" @click="eliminando(item.id)">Eliminar</v-btn></td>
-            <td><v-btn color="primary" elevation="5" @click="modificandoTask(item.id)">Modificar</v-btn></td>
+            <td><b-button @click="eliminandoUsuario(item.id)" variant="danger">Eliminar</b-button></td>
+            <td><b-button @click="editUsuario(item.id)">Modificar</b-button></td>
             </tr>
         </tbody>
         </table>
@@ -35,13 +35,8 @@ export default {
         },
     },
     methods: {
-        eliminarUser(id){
-            this.$confirm('¿Estás seguro?', {
-            confirmButtonText: 'OK',
-            cancelButtonText: 'Cancel',
-            type: 'warning',
-            center: true
-            }).then(() => {
+        eliminandoUsuario(id){
+            this.$confirm().then(() => {
             this.$message({
                 type: 'success',
                 message: 'Usuario Eliminado.'
@@ -51,8 +46,8 @@ export default {
             console.log('Se produjo un error al eliminar al usuario.')
             });
         },
-        editarUsuario(id){
-            this.$router.push({name: 'ModificarUser', params: {id: id}});
+        editUsuario(id){
+            this.$router.push({name: 'actualizandoUsuario', params: {id: id}});
         }
     },
 };
