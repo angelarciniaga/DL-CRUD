@@ -14,6 +14,10 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
+//inicialización de Firebase 
+export const db = firebase.firestore();
+export const colecion = db.collection('usuarios')
+
 Vue.config.productionTip = false
 new Vue({
   router,

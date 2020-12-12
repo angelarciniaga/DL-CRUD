@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <h1>Ingresar</h1>
+    <b-form @submit.prevent="login" @reset="onReset" v-if="show">
       <b-form-group
         id="input-group-1"
         label="Tu correo"
@@ -25,34 +26,51 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button class="mr-3" type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase';
+
   export default {
     name: 'Login',
     data() {
       return {
         form: {
           email: '',
-          name: ''
+          clave: ''
         },
         show: true
       }
     },
     methods: {
-      onSubmit(evt) {
-        evt.preventDefault()
-        alert(JSON.stringify(this.form))
+      
+
+      login() {
+        if(this.form.email && this.form.clave && this.form.clave.length >= 6){
+          firebase.auth().signInWithEmailAndPassword(this.form.email, this.form.clave)
+            .then(resp => {
+              console.log(resp.user);
+              console.log(resp.user.email);
+              this.$router.push('/home');
+            })
+            .catch(error => {
+              console.error(error.code);
+              console.error(error.message);
+              this.$router.push('/registro')
+            })
+        } else {
+          console.log('No se conecta');
+        }
       },
       onReset(evt) {
         evt.preventDefault()
         // Reset our form values
         this.form.email = ''
-        this.form.name = ''
+        this.form.clave = ''
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {
