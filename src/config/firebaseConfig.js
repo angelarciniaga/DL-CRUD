@@ -1,9 +1,8 @@
 export const firebaseConfig = {
-    apiKey: "AIzaSyDx1MeBstQtXtegsXEig13f8IRiLuMWbeM",
-    authDomain: "dl-crud-97d02.firebaseapp.com",
-    projectId: "dl-crud-97d02",
-    storageBucket: "dl-crud-97d02.appspot.com",
-    messagingSenderId: "296569772517",
-    appId: "1:296569772517:web:feea5953d2da907418f70c",
-    measurementId: "G-LR3NWDDL5D"
+    apiKey: "AIzaSyCFXUhkG9NXxGbpYXpb8j5CWNqteGV4uEc",
+    authDomain: "dl-crud-42630.firebaseapp.com",
+    projectId: "dl-crud-42630",
+    storageBucket: "dl-crud-42630.appspot.com",
+    messagingSenderId: "948355027633",
+    appId: "1:948355027633:web:9fcde83eb90c883d088890"
 };
